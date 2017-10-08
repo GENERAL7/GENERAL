@@ -13,7 +13,7 @@ git clone https://github.com/GENERAL7/GENERAL.git && cd GENERAL && chmod +x GENE
 
 <br>
 
-# <p align="center" style="color: #14635c;" >  تنصيب سورس الزعيم الاصدار 20 والاخير
+# <p align="center" style="color: #14635c;" >  تنصيب سورس جنرال الاصدار 1 
 
 🗯┇  افتـح ترمنـــأل وخلي هاي
 ```sh

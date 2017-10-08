@@ -11,11 +11,11 @@ local data = load_data(_config.moderation.data)
 if msg.from.username then
 usernamex = "@"..(msg.from.username or "---")
 else
-usernamex = "️ ما مسوي  😹💔 "
+usernamex = "️ لايوجد  😹💔 "
 end
 
 if matches[1] == _config.botname..' غادر' and is_sudo(msg) and msg.to.type == "supergroup" or msg.to.type == "group" then
-send_msg(msg.to.id,"🗯┇ تم حذف بيانات المجموعة \n🗯┇  سوف اغادر باي 👋🏿" )
+send_msg(msg.to.id,"🗯┇ تم حذف بيانات المجموعة \n🗯┇  تم المغادره  👋🏿" )
 botrem(msg)
 end
 --------------------[Test Bot]----------------------------
@@ -39,13 +39,13 @@ end
 elseif w=="اريد رابط الحذف" or w=="اريد رابط حذف" or w=="رابط حذف" or w=="رابط الحذف" then
 return [[
 🗯┇ رابط حذف حـساب التيليگرام ↯
-🗯┇ لتتندم فڪر قبل ڪلشي ❤️
+🗯┇ احذف وتوكل  ❤️
 🗯┇ بالتـوفيـق عزيزي ...
 
 🗯┇ـ  https://telegram.org/deactivate
 ]]  
 elseif w== 'ايدي' and msg.to.type == 'private' then
-local iid = "🗯┇ ايدي البوت :` "..our_id.. "`\n🗯┇ ايدي حسابك :` "..msg.from.id.. "`\n🗯┇ قناه الـسـورس : @lBOSSl"
+local iid = "🗯┇ ايدي البوت :` "..our_id.. "`\n🗯┇ ايدي حسابك :` "..msg.from.id.. "`\n🗯┇ قناه الـسـورس : @GENERAL77_CH"
 send_msg(msg.from.id, iid,nil,'md')
 
 end
@@ -128,9 +128,9 @@ if lock_reply =="yes" and  data[tostring(msg.to.id)] then
 if  msg.to.type == "supergroup" or msg.to.type == "group" then
 ----------------------
 local su = {
-"نعم حبيبي المطور 🌝❤",
+"نعم گليبي المطور 🌝❤",
 "يابعد روح ".._config.botname.." 😘❤️",
-"هلا بمطوري العشق أمرني"
+"هلا بمطوري تفظل"
   }
 local  ss97 = {
 "ها حياتي😻",

@@ -130,7 +130,7 @@ local function run(msg, matches)
 local data = load_data(_config.moderation.data)
 
   if tonumber(msg.from.id) == tonumber(sudo_id) then
-   if matches[1] == "رفع مطور" then
+   if matches[1] == "اضف مطور" then
    if not matches[2] and msg.reply_to_message then
 	if msg.reply.username then
 	username = "@"..check_markdown(msg.reply.username)
@@ -144,7 +144,7 @@ end
           table.insert(_config.sudo_users, tonumber(msg.reply.id)) 
      save_config() 
      reload_plugins(true) 
-    return "🗯┇  الـعـضـو  :"..username.." \n🗯┇   الايـدي :  ["..msg.reply.id.."]\n🗯┇   تـم تـرقـيـتـه لـيـصـبـح مـطـور ☑️┇🔒"
+    return "🗯┇  الـعـضـو  :"..username.." \n🗯┇   الايـدي :  ["..msg.reply.id.."]\n🗯┇   تـم اضافته مطور للبوت ☑️┇🔒"
       end
   elseif matches[2] and matches[2]:match('^%d+') then
             if matches[2] == our_id then return end
@@ -161,7 +161,7 @@ end
            table.insert(_config.sudo_users, tonumber(matches[2])) 
      save_config() 
      reload_plugins(true) 
-    return "🗯┇  الـعـضـو  :  "..user_name.."\n🗯┇  الايدي : ["..matches[2].."] \n🗯┇   تـم تـرقـيـتـه لـيـصـبـح مـطـور ☑️┇🔒"
+    return "🗯┇  الـعـضـو  :  "..user_name.."\n🗯┇  الايدي : ["..matches[2].."] \n🗯┇   تـم اضافته مطور للبوت ☑️┇🔒"
    end
    elseif matches[2] and string.match(matches[2], '@[%a%d_]')  then
     local status = resolve_username(matches[2])
@@ -179,7 +179,7 @@ if moody_sudo(tonumber(status.information.id)) then
      end
   end
 end
-   if matches[1] == "تنزيل مطور" then
+   if matches[1] == "حذف مطور" then
       if not matches[2] and msg.reply_to_message then
 	if msg.reply.username then
 	username = "@"..check_markdown(msg.reply.username)
@@ -188,12 +188,12 @@ end
 end
 if tonumber(msg.reply.id) == tonumber(our_id) then return end
    if not moody_sudo(tonumber(msg.reply.id)) then
-    return "🗯┇  الـعـضـو  :"..username.." \n🗯┇   الايـدي :  ["..msg.reply.id.."]\n🗯┇  انـه بـالـتـأكـيـد تـم تـنـزيـلـه مـن الـمـطـوريـن ☑️┇🔓"
+    return "🗯┇  الـعـضـو  :"..username.." \n🗯┇   الايـدي :  ["..msg.reply.id.."]\n🗯┇   بـالـتـأكـيـد تـم حذفه مـن الـمـطـوريـن ☑️┇🔓"
     else
           table.remove(_config.sudo_users, getindex( _config.sudo_users, tonumber(msg.reply.id)))
 		save_config()
      reload_plugins(true) 
-    return "🗯┇  الـعـضـو  :"..username.." \n🗯┇   الايـدي :  ["..msg.reply.id.."]\n🗯┇  تـم تـنـزيـلـه مـن الـمـطـوريـن  ☑️┇🔓"
+    return "🗯┇  الـعـضـو  :"..username.." \n🗯┇   الايـدي :  ["..msg.reply.id.."]\n🗯┇  تـم حذفه مـن الـمـطـوريـن  ☑️┇🔓"
       end
 	  elseif matches[2] and matches[2]:match('^%d+') then
  if tonumber(matches[2]) == tonumber(our_id) then return end
@@ -205,12 +205,12 @@ if tonumber(msg.reply.id) == tonumber(our_id) then return end
 		user_name = escape_markdown(getUser(matches[2]).information.first_name)
 	  end
    if not moody_sudo(tonumber(matches[2])) then
-    return "🗯┇  الـعـضـو  :  "..user_name.." \n🗯┇   الايـدي :  ["..matches[2].."]\n🗯┇  انـه بـالـتـأكـيـد تـم تـنـزيـلـه مـن الـمـطـوريـن ☑️┇🔓"
+    return "🗯┇  الـعـضـو  :  "..user_name.." \n🗯┇   الايـدي :  ["..matches[2].."]\n🗯┇   بـالـتـأكـيـد تـم حذفه مـن الـمـطـوريـن ☑️┇🔓"
     else
           table.remove(_config.sudo_users, getindex( _config.sudo_users, tonumber(matches[2])))
 		save_config()
      reload_plugins(true) 
-    return "🗯┇  الـعـضـو  :  "..user_name.." \n🗯┇   الايـدي :  ["..matches[2].."] \n🗯┇  تـم تـنـزيـلـه مـن الـمـطـوريـن  ☑️┇🔓"
+    return "🗯┇  الـعـضـو  :  "..user_name.." \n🗯┇   الايـدي :  ["..matches[2].."] \n🗯┇  تـم حذفه مـن الـمـطـوريـن  ☑️┇🔓"
       end
 elseif matches[2] and string.match(matches[2], '@[%a%d_]')  then
       local status = resolve_username(matches[2])
@@ -220,12 +220,12 @@ elseif matches[2] and string.match(matches[2], '@[%a%d_]')  then
    return "🗯┇ لا يوجد عضو بهذا المعرف"
     end
    if not moody_sudo(tonumber(status.information.id)) then
-    return "🗯┇  الـعـضـو  :  @"..check_markdown(status.information.username).." \n🗯┇   الايـدي :  ["..status.information.id.."] \n🗯┇  انـه بـالـتـأكـيـد تـم تـنـزيـلـه مـن الـمـطـوريـن ☑️┇🔓"
+    return "🗯┇  الـعـضـو  :  @"..check_markdown(status.information.username).." \n🗯┇   الايـدي :  ["..status.information.id.."] \n🗯┇  بـالـتـأكـيـد تـم حذفه مـن الـمـطـوريـن ☑️┇🔓"
     else
           table.remove(_config.sudo_users, getindex( _config.sudo_users, tonumber(status.information.id)))
 		save_config()
      reload_plugins(true) 
-    return "🗯┇  الـعـضـو  :  @"..check_markdown(status.information.username).." \n🗯┇   الايـدي :  ["..status.information.id.."] \n🗯┇  تـم تـنـزيـلـه مـن الـمـطـوريـن  ☑️┇🔓"
+    return "🗯┇  الـعـضـو  :  @"..check_markdown(status.information.username).." \n🗯┇   الايـدي :  ["..status.information.id.."] \n🗯┇  تـم حذفه مـن الـمـطـوريـن  ☑️┇🔓"
           end
       end
    end
@@ -255,7 +255,7 @@ if matches[1] == 'تعطيل' and matches[2] and string.match(matches[2], '^%d+$
     send_msg(msg.to.id , '🗯┇ المجموعه : *'..matches[2]..'* تم تعطيلها')
 		end
   if matches[1] == 'اذاعه' and matches[2]  then	
-if tonumber(msg.from.id) ~= tonumber(sudo_id) then return " هذا الامر للمطور الاساسي فقط 🗯┇" end
+if tonumber(msg.from.id) ~= tonumber(sudo_id) then return " هذا الامر للمطور الاساسي حصرا 🗯┇" end
   local data = load_data(_config.moderation.data)		
   local bc = matches[2]		
   local i = 1
@@ -375,7 +375,7 @@ if msg.from.username then username = '@'..msg.from.username
 else username = '<i>ما مسوي  😹💔</i>'
 end
 if is_sudo(msg) then rank = 'المطور مالتي 😻'
-elseif is_owner(msg) then rank = 'مدير المجموعه 😽'
+elseif is_owner(msg) then rank = 'مدير الكروب 😽'
 elseif is_mod(msg) then rank = 'ادمن في البوت 😺'
 elseif is_whitelist (msg) then rank = '😺 عضو مميز'
 else rank = 'مجرد عضو 😹'
@@ -423,10 +423,10 @@ tkey = [[
 🗯┇ م2 ➙ اوامر اعدادات المجموعه
 🗯┇ م3 ➙ اوامر الحـمـايـه
 🗯┇ م4 ➙ الاوامـر الـ؏ـامـه
-🗯┇ م المطور ➙ اوامر المطور
-🗯┇ اوامر الرد ➙ لاضافه رد معين
-🗯┇ اوامر الزخرفه ➙ لزخرفه الكلمات
-🗯┇ اوامر الملفات ➙ لاضافه وتفعيل وحذف الملفات
+🗯┇ م6 ➙ اوامر المطور
+🗯┇ م7 ➙ لاضافه رد معين
+🗯┇ م8 ➙ لزخرفه الكلمات
+🗯┇ م9 ➙ لاضافه وتفعيل وحذف الملفات
 🗯┇ـ➖➖➖➖➖
 ]]
 send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
@@ -437,7 +437,7 @@ local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
-{text= ' Tᕼ3ᗷOᔕᔕ  ᐯ20 ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك انته كمطور
+{text= ' GENERAL  ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك  كمطور
 }					
 }
 tkey = [[
@@ -471,13 +471,13 @@ local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
-{text= ' Tᕼ3ᗷOᔕᔕ  ᐯ20 ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك انته كمطور
+{text= ' GENERAL ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك كمطور
 }					
 }
 tkey = [[
 🗯┇ اوامر الوضع للمجموعه 
 🗯┇ـ➖➖➖➖➖
-🗯┇ ضع الترحيب + الكلمه  :↜ لوضع ترحيب  
+🗯┇ ضع ترحيب + الكلمه  :↜ لوضع ترحيب  
 🗯┇ ضع قوانين :↜ لوضع قوانين 
 🗯┇ ضع وصف :↜ لوضع وصف  
 🗯┇ ضـع رابط :↜ لوضع الرابط  
@@ -505,7 +505,7 @@ local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
-{text= ' Tᕼ3ᗷOᔕᔕ  ᐯ20 ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك انته كمطور
+{text= ' GENERAL ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك كمطور
 }					
 }
 tkey = [[
@@ -546,7 +546,7 @@ local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
-{text= ' Tᕼ3ᗷOᔕᔕ  ᐯ20 ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك انته كمطور
+{text= ' GENERAL ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك كمطور
 }					
 }
 tkey = [[
@@ -569,13 +569,13 @@ tkey = [[
 ]]
 send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
-if matches[1]== "م المطور" then
+if matches[1]== "6م" then
 if not is_sudo(msg) then return "🗯┇ للمطوين فقط 👮‍♀️" end
 local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
-{text= ' Tᕼ3ᗷOᔕᔕ  ᐯ20 ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك انته كمطور
+{text= ' GENERAL ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك كمطور
 }					
 }
 tkey = [[
@@ -593,13 +593,13 @@ tkey = [[
 ]]
 send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
-if matches[1]== 'اوامر الرد' then
+if matches[1]== '7م' then
 if not is_owner(msg) then return "🗯┇ للمدراء فقط 👮‍♀️" end
 local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
-{text= ' Tᕼ3ᗷOᔕᔕ  ᐯ20 ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك انته كمطور
+{text= ' GENERAL ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك كمطور
 }					
 }
 tkey = [[
@@ -613,13 +613,13 @@ tkey = [[
 ]]
 send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
-if matches[1]== "اوامر الزخرفه" then
+if matches[1]== "8م" then
 if not is_mod(msg) then return "🗯┇ للاداريين فقط 👮‍♀️" end
 local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
-{text= ' Tᕼ3ᗷOᔕᔕ  ᐯ20 ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك انته كمطور
+{text= ' GENERAL ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك كمطور
 }					
 }
 tkey = [[
@@ -630,13 +630,13 @@ tkey = [[
 ]]
 send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
-if matches[1]== "اوامر الملفات" then
+if matches[1]== "م9" then
 if not is_sudo(msg) then return "🗯┇ للمطوين فقط 👮‍♀️" end
 local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
-{text= ' Tᕼ3ᗷOᔕᔕ  ᐯ20 ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك انته كمطور
+{text= ' GENERAL ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك كمطور
 }					
 }
 tkey = [[
@@ -657,22 +657,22 @@ local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
-{text= ' Tᕼ3ᗷOᔕᔕ  ᐯ20 ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك انته كمطور
+{text= ' GENERAL ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك كمطور
 }					
 }
-tkey = [[🗯┇ مرحبا انا بوت اسمي الزعيم 🎖
-🗯┇اختصاصي حمايه كروبات 
+tkey = [[🗯┇ اهلا بك في بوت جنرال 🎖
+🗯┇عملي حمايه كروبات 
 🗯┇من السبام والوسائط والتكرار والخ ...
-🗯┇ مطور البوت : @TH3BOSS
-🗯┇ للاستفسار راسلني : @lBOSSl ]]
+🗯┇ مطور البوت : @KNSLTHM
+🗯┇ للاستفسار راسلني : @KNSLTHM ]]
 send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
 
 if matches[1]=="رتبتي" and not matches[2] then
 if is_sudo(msg) then
-rank = 'المطور مالتي 😻'
+rank = 'مطوري  😻'
 elseif is_owner(msg) and msg.to.type ~= 'private'  then
-rank = 'مدير المجموعه 😽'
+rank = 'مدير الكروب 😽'
 elseif is_mod(msg) and msg.to.type ~= 'private'  then
 rank = ' ادمن في البوت 😺'
 elseif  is_whitelist(msg.from.id, msg.to.id) and msg.to.type ~= 'private' then
@@ -696,7 +696,7 @@ rank = 'انته المطور 👨🏼‍🔧'
 elseif is_sudo1(msg.reply.id) then
 rank = 'المطور هذا 😻'
 elseif is_owner1( msg.to.id,msg.reply.id) then
-rank = 'مدير المجموعه 😽'
+rank = 'مدير الكروب 😽'
 elseif is_mod1( msg.to.id,msg.reply.id) then
 rank = ' ادمن في البوت 😺'
 elseif is_whitelist(msg.reply.id, msg.to.id)  then
@@ -715,24 +715,24 @@ end
 end
 return {
   patterns = {
-    "^(م المطور)$", 
+    "^(م6)$", 
     "^[/](start)$", 
-    "^(اوامر الرد)$", 
+    "^(7م)$", 
     "^(الاوامر)$", 
     "^(م1)$", 
     "^(م2)$", 
     "^(م3)$", 
     "^(م4)$", 
-    "^(اوامر الزخرفه)$", 
-    "^(اوامر الملفات)$", 
+    "^(م8)$", 
+    "^(م9)$", 
     "^(معلوماتي)$",
     "^(موقعي)$",
-    "^(رفع مطور)$",
-    "^(تنزيل مطور)$",
+    "^(اضف مطور)$",
+    "^(حذف مطور)$",
     "^(رفع مطور) (%d+)$",
-    "^(تنزيل مطور) (%d+)$",
-    "^(رفع مطور) (@[%a%d%_]+)$",
-    "^(تنزيل مطور) (@[%a%d%_]+)$",
+    "^(حذف مطور) (%d+)$",
+    "^(اضف مطور) (@[%a%d%_]+)$",
+    "^(حذف مطور) (@[%a%d%_]+)$",
     "^(المطورين)$",
     "^(المجموعات)$",
     "^(الاشتراك)$",

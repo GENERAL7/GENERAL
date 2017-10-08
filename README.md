@@ -1,13 +1,13 @@
-# <p align="center" style="color:#cb3349" > [<< TH3BOSS >> V20 (Final Version)](https://telegram.me/llDEV1ll)
+# <p align="center" style="color:#cb3349" > [<< GENERAL >>  (First Version)](https://telegram.me/GENERAL77_CH)
 
- <p align="center" style="color: #14635c;" > بوت الزعيم الاقوى والاحدث لحمايه المجموعات في التلكرام
-<p align="center"><img src="زعيم.jpg" alt="بوت زعيم" title="بوت زعيم">
+ <p align="center" style="color: #14635c;" > بوت جنرال لحمايه المجموعات في التلكرام
+<p align="center"><img src="جنرال.jpg" alt="بوت جنرال" title="بوت جنرال">
 
 ***
 
 # <p align="center" style="color: #14635c;" > التنصيب بكود واحد
 ```sh
-git clone https://github.com/moody2020/TH3BOSS.git && cd TH3BOSS && chmod +x TH3BOSS.sh && ./TH3BOSS.sh install && ./TH3BOSS.sh
+git clone https://github.com/GENERAL7/GENERAL.git && cd GENERAL && chmod +x GENERAL.sh && ./GENERAL.sh install && ./GENERAL.sh
 ```
 
 
@@ -21,37 +21,37 @@ redis-server
 ```
 🗯┇  اتركه مفتوح وافتح ترمنال ثاني وخلي
 ```sh
-git clone https://github.com/moody2020/TH3BOSS.git
+git clone https://github.com/GENERAL7/GENERAL.git
 ```
-🗯┇  وراها هاي
+🗯┇  بعدها هاي
 ```sh
-cd TH3BOSS
+cd GENERAL
 ```
-🗯┇  وراها هاي 
+🗯┇  بعدها هاي 
 ```sh
-chmod +x TH3BOSS.sh
+chmod +x GENERAL.sh
 ```
 🗯┇  وراها هاي ونتظر يكمل التنصيب 
 ```sh
-./TH3BOSS.sh install
+./GENERAL.sh install
 ```
 🗯┇  واخر شي هااي 
 ```sh
-./TH3BOSS.sh
+./GENERAL.sh
 ```
-🗯┇للاستفسار راسلني 
+🗯┇للاستفسار  
 ```sh
-@TH3BOSS
+@KNSLTHM
 ```
-🗯┇للاستفسار راسلني 
+🗯┇للاستفسار  
 ```sh
-@lBOSSl
+@KNSLTHM
 ```
-##  [🗯┇انتظر قليلا ثم يطلب منك ايدي وتوكن خلي ايديك والتوكن مبروك عليك افضل بوت بالتلكرام](https://telegram.me/llDEV1ll)
+##  [🗯┇انتظر قليلا ثم يطلب منك ايدي وتوكن خلي ايديك والتوكن مبروك عليك افضل بوت بالتلكرام](https://telegram.me/GENERAL77_CH)
 # <p align="center"> 🗯┇  للاستفسار راسلني 
 
-  [Mohammed Hisham](https://telegram.me/TH3BOSS) <br>
+  [Nehad](https://telegram.me/KNSLTHM) <br>
   
-  [TH3BOSS](https://telegram.me/LBOSSL) <br>
+  [GENERAL](https://telegram.me/KNSLTHM) <br>
   
-  [CH - TH3BOSS](https://telegram.me/LLDEV1LL) 
+  [CH - GENERAL](https://telegram.me/GENERAL77_CH) 

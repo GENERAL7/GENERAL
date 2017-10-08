@@ -1551,9 +1551,9 @@ local lock_id = data[tostring(msg.to.id)]["settings"]["lock_id"]
 local status = getUserProfilePhotos(msg.from.id, 0, 0)
 local rank
 if is_sudo(msg) then
-rank = 'المطور مالتي 😻'
+rank = 'مطوري  😻'
 elseif is_owner(msg) then
-rank = 'مدير المجموعه 😽'
+rank = 'مدير الكروب 😽'
 elseif is_mod(msg) then
 rank = 'ادمن في البوت 😺'
 elseif  is_whitelist(msg.from.id, msg.to.id) then
@@ -1619,7 +1619,7 @@ end
 if matches[1] == 'الحمايه' then
 return group_settings(msg, target)
 end
-if matches[1] == "رفع المدير" and is_sudo(msg) then
+if matches[1] == "رفع مدير" and is_sudo(msg) then
    if not matches[2] and msg.reply_to_message then
 	if msg.reply.username then
 	username = "@"..check_markdown(msg.reply.username)
@@ -1631,7 +1631,7 @@ if matches[1] == "رفع المدير" and is_sudo(msg) then
     else
   data[tostring(msg.to.id)]['owners'][tostring(msg.reply.id)] = username
     save_data(_config.moderation.data, data)
-    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."] \n🗯┇ تـم تـرقـيـتـه لـيـصـبـح مـديـر ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."] \n🗯┇ تـم رفعه مدير للكروب ☑️┇🔒"
       end
 	  elseif matches[2] and matches[2]:match('^%d+') then
   if not getUser(matches[2]).result then
@@ -1646,7 +1646,7 @@ if matches[1] == "رفع المدير" and is_sudo(msg) then
     else
   data[tostring(msg.to.id)]['owners'][tostring(matches[2])] = user_name
     save_data(_config.moderation.data, data)
-    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   ["..matches[2].."] \n🗯┇ تـم تـرقـيـتـه لـيـصـبـح مـديـر ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   ["..matches[2].."] \n🗯┇ تـم رفعه مدير للكروب ☑️┇🔒"
    end
    elseif matches[2] and string.match(matches[2], '@[%a%d_]')  then
   if not resolve_username(matches[2]).result then
@@ -1662,7 +1662,7 @@ if matches[1] == "رفع المدير" and is_sudo(msg) then
    end
 end
 end
-if matches[1] == "تنزيل المدير" and is_sudo(msg) then
+if matches[1] == "تنزيل مدير" and is_sudo(msg) then
       if not matches[2] and msg.reply_to_message then
 	if msg.reply.username then
 	username = "@"..check_markdown(msg.reply.username)
@@ -1670,7 +1670,7 @@ if matches[1] == "تنزيل المدير" and is_sudo(msg) then
 	username = escape_markdown(msg.reply.print_name)
     end
    if not data[tostring(msg.to.id)]['owners'][tostring(msg.reply.id)] then
-    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."]\n🗯┇ انـه بـالـتـأكـيـد تـم تـنـزيـلـه مـن الاداره  ☑️┇🔓"
+    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."]\n🗯┇  بـالـتـأكـيـد تـم تـنـزيـلـه مـن الاداره  ☑️┇🔓"
     else
   data[tostring(msg.to.id)]['owners'][tostring(msg.reply.id)] = nil
     save_data(_config.moderation.data, data)
@@ -1685,7 +1685,7 @@ if matches[1] == "تنزيل المدير" and is_sudo(msg) then
 		user_name = escape_markdown(getUser(matches[2]).information.first_name)
 	  end
 	  if not data[tostring(msg.to.id)]['owners'][tostring(matches[2])] then
-    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   ["..matches[2].."]\n🗯┇ انـه بـالـتـأكـيـد تـم تـنـزيـلـه مـن الاداره  ☑️┇🔓"
+    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   ["..matches[2].."]\n🗯┇  بـالـتـأكـيـد تـم تـنـزيـلـه مـن الاداره  ☑️┇🔓"
     else
   data[tostring(msg.to.id)]['owners'][tostring(matches[2])] = nil
     save_data(_config.moderation.data, data)
@@ -1713,11 +1713,11 @@ if matches[1] == "رفع ادمن" and is_owner(msg) then
 	username = escape_markdown(msg.reply.print_name)
     end
    if data[tostring(msg.to.id)]['mods'][tostring(msg.reply.id)] then
-    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."]\n🗯┇ انـه بـالـتـأكـيـد ادمـن  ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."]\n🗯┇  بـالـتـأكـيـد ادمـن  ☑️┇🔒"
     else
   data[tostring(msg.to.id)]['mods'][tostring(msg.reply.id)] = username
     save_data(_config.moderation.data, data)
-    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."]\n🗯┇ تـم تـرقـيـتـه لـيـصـبـح ادمـن  ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."]\n🗯┇ تـم رفعه لـيـصـبـح ادمـن  ☑️┇🔒"
       end
 	  elseif matches[2] and matches[2]:match('^%d+') then
   if not getUser(matches[2]).result then
@@ -1728,11 +1728,11 @@ if matches[1] == "رفع ادمن" and is_owner(msg) then
 		user_name = escape_markdown(getUser(matches[2]).information.first_name)
 	  end
 	  if data[tostring(msg.to.id)]['mods'][tostring(matches[2])] then
-    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   ["..matches[2].."]\n🗯┇ انـه بـالـتـأكـيـد ادمـن  ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   ["..matches[2].."]\n🗯┇  بـالـتـأكـيـد ادمـن  ☑️┇🔒"
     else
   data[tostring(msg.to.id)]['mods'][tostring(matches[2])] = user_name
     save_data(_config.moderation.data, data)
-    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   ["..matches[2].."]\n🗯┇ تـم تـرقـيـتـه لـيـصـبـح ادمـن  ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   ["..matches[2].."]\n🗯┇ تـم رفعه لـيـصـبـح ادمـن  ☑️┇🔒"
    end
    elseif matches[2] and string.match(matches[2], '@[%a%d_]')  then
   if not resolve_username(matches[2]).result then
@@ -1740,11 +1740,11 @@ if matches[1] == "رفع ادمن" and is_owner(msg) then
     end
    local status = resolve_username(matches[2]).information
    if data[tostring(msg.to.id)]['mods'][tostring(user_id)] then
-    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."]\n🗯┇ انـه بـالـتـأكـيـد ادمـن  ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."]\n🗯┇  بـالـتـأكـيـد ادمـن  ☑️┇🔒"
     else
   data[tostring(msg.to.id)]['mods'][tostring(status.id)] = check_markdown(status.username)
     save_data(_config.moderation.data, data)
-    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."]\n🗯┇ تـم تـرقـيـتـه لـيـصـبـح ادمـن  ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."]\n🗯┇ تـم رفعه لـيـصـبـح ادمـن  ☑️┇🔒"
    end
 end
 end
@@ -1756,7 +1756,7 @@ if matches[1] == "تنزيل ادمن" and is_owner(msg) then
 	username = escape_markdown(msg.reply.print_name)
     end
    if not data[tostring(msg.to.id)]['mods'][tostring(msg.reply.id)] then
-    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."]\n🗯┇ انـه بـالـتـأكـيـد تـم تـنـزيـلـه مـن الادمـنـيـه  ☑️┇🔓"
+    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."]\n🗯┇  بـالـتـأكـيـد تـم تـنـزيـلـه مـن الادمـنـيـه  ☑️┇🔓"
     else
   data[tostring(msg.to.id)]['mods'][tostring(msg.reply.id)] = nil
     save_data(_config.moderation.data, data)
@@ -1783,11 +1783,11 @@ if matches[1] == "تنزيل ادمن" and is_owner(msg) then
     end
    local status = resolve_username(matches[2]).information
    if not data[tostring(msg.to.id)]['mods'][tostring(status.id)] then
-    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."] \n🗯┇ انـه بـالـتـأكـيـد تـم تـنـزيـلـه مـن الادمـنـيـه  ☑️┇🔓"
+    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."] \n🗯┇  بـالـتـأكـيـد تـم تـنـزيـلـه مـن الادمـنـيـه  ☑️┇🔓"
     else
   data[tostring(msg.to.id)]['mods'][tostring(status.id)] = nil
     save_data(_config.moderation.data, data)
-    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."]\n🗯┇ تـم تـنـزيـلـه مـن ا��ادمـنـيـه  ☑️┇🔓"
+    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."]\n🗯┇ تـم تـنـزيـلـه مـن الادمنيه  ☑️┇🔓"
       end
 end
 end
@@ -1799,11 +1799,11 @@ if matches[1] == "رفع عضو مميز"  and is_mod(msg) then
 	username = escape_markdown(msg.reply.print_name)
     end
    if data[tostring(msg.to.id)]['whitelist'][tostring(msg.reply.id)] then
-    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."]\n🗯┇ انـه بـالـتـأكـيـد عـضـو مـمـيـز ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."]\n🗯┇  بـالـتـأكـيـد عـضـو مـمـيـز ☑️┇🔒"
     else
   data[tostring(msg.to.id)]['whitelist'][tostring(msg.reply.id)] = username
     save_data(_config.moderation.data, data)
-    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."] \n🗯┇ تـم تـرقـيـتـه لـيـصـبـح عـضـو مـمـيـز  ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."] \n🗯┇ تـم رفعه لـيـصـبـح عـضـو مـمـيـز  ☑️┇🔒"
       end
 	  elseif matches[2] and matches[2]:match('^%d+') then
   if not getUser(matches[2]).result then
@@ -1814,11 +1814,11 @@ if matches[1] == "رفع عضو مميز"  and is_mod(msg) then
 		user_name = escape_markdown(getUser(matches[2]).information.first_name)
 	  end
 	  if data[tostring(msg.to.id)]['whitelist'][tostring(matches[2])] then
-    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   "..matches[2].."\n🗯┇ انـه بـالـتـأكـيـد عـضـو مـمـيـز ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   "..matches[2].."\n🗯┇  بـالـتـأكـيـد عـضـو مـمـيـز ☑️┇🔒"
     else
   data[tostring(msg.to.id)]['whitelist'][tostring(matches[2])] = user_name
     save_data(_config.moderation.data, data)
-    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   "..matches[2].."\n🗯┇ تـم تـرقـيـتـه لـيـصـبـح عـضـو مـمـيـز  ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   "..matches[2].."\n🗯┇ تـم رفعه لـيـصـبـح عـضـو مـمـيـز  ☑️┇🔒"
    end
    elseif matches[2] and string.match(matches[2], '@[%a%d_]')  then
   if not resolve_username(matches[2]).result then
@@ -1826,11 +1826,11 @@ if matches[1] == "رفع عضو مميز"  and is_mod(msg) then
     end
    local status = resolve_username(matches[2]).information
    if data[tostring(msg.to.id)]['whitelist'][tostring(status.id)] then
-    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."] \n🗯┇ انـه بـالـتـأكـيـد عـضـو مـمـيـز ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."] \n🗯┇  بـالـتـأكـيـد عـضـو مـمـيـز ☑️┇🔒"
     else
   data[tostring(msg.to.id)]['whitelist'][tostring(status.id)] = check_markdown(status.username)
     save_data(_config.moderation.data, data)
-    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."] \n🗯┇ تـم تـرقـيـتـه لـيـصـبـح عـضـو مـمـيـز  ☑️┇🔒"
+    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."] \n🗯┇ تـم رفعه لـيـصـبـح عـضـو مـمـيـز  ☑️┇🔒"
    end
 end
 end
@@ -1842,7 +1842,7 @@ if matches[1] == "تنزيل عضو مميز" and is_mod(msg) then
 	username = escape_markdown(msg.reply.print_name)
     end
    if not data[tostring(msg.to.id)]['whitelist'][tostring(msg.reply.id)] then
-    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."] \n🗯┇ انـه بـالـتـأكـيـد تـم تـنـزيـلـه مـن  الاعـضـاء الـمـمـيـزوون   ☑️┇🔓"
+    return "🗯┇ الـعـضـو  :  "..username.."\n🗯┇ الايـدي :   ["..msg.reply.id.."] \n🗯┇  بـالـتـأكـيـد تـم تـنـزيـلـه مـن  الاعـضـاء الـمـمـيـزوون   ☑️┇🔓"
     else
   data[tostring(msg.to.id)]['whitelist'][tostring(msg.reply.id)] = nil
     save_data(_config.moderation.data, data)
@@ -1857,7 +1857,7 @@ if matches[1] == "تنزيل عضو مميز" and is_mod(msg) then
 		user_name = escape_markdown(getUser(matches[2]).information.first_name)
 	  end
 	  if not data[tostring(msg.to.id)]['whitelist'][tostring(matches[2])] then
-    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   "..matches[2].."\n🗯┇ انـه بـالـتـأكـيـد تـم تـنـزيـلـه مـن  الاعـضـاء الـمـمـيـزوون   ☑️┇🔓"
+    return "🗯┇ الـعـضـو  :  "..user_name.."\n🗯┇ الايـدي :   "..matches[2].."\n🗯┇  بـالـتـأكـيـد تـم تـنـزيـلـه مـن  الاعـضـاء الـمـمـيـزوون   ☑️┇🔓"
     else
   data[tostring(msg.to.id)]['whitelist'][tostring(matches[2])] = nil
     save_data(_config.moderation.data, data)
@@ -1869,7 +1869,7 @@ if matches[1] == "تنزيل عضو مميز" and is_mod(msg) then
     end
    local status = resolve_username(matches[2]).information
    if not data[tostring(msg.to.id)]['whitelist'][tostring(status.id)] then
-    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."] \n🗯┇ انـه بـالـتـأكـيـد تـم تـنـزيـلـه مـن  الاعـضـاء الـمـمـيـزوون   ☑️┇🔓"
+    return "🗯┇ الـعـضـو  :  @"..check_markdown(status.username).."\n🗯┇ الايـدي :   ["..status.id.."] \n🗯┇  بـالـتـأكـيـد تـم تـنـزيـلـه مـن  الاعـضـاء الـمـمـيـزوون   ☑️┇🔓"
     else
   data[tostring(msg.to.id)]['whitelist'][tostring(status.id)] = nil
     save_data(_config.moderation.data, data)
@@ -2331,7 +2331,7 @@ return "🗯┇ _مرحبآ عزيزي_\n🗯┇ _تم ايقاف التحذير
 	end
 	end
 
-	if matches[1] == "ضع الترحيب" and matches[2] and is_mod(msg) then
+	if matches[1] == "ضع ترحيب" and matches[2] and is_mod(msg) then
 		data[tostring(msg.to.id)]['setwelcome'] = matches[2]
 	    save_data(_config.moderation.data, data)
 		return "🗯┇ _تم وضع الترحيب بنجاح كلاتي 👋🏻_\n*"..matches[2].."*\n\n🗯┇ _ملاحظه_\n🗯┇ _تستطيع اضهار القوانين بواسطه _ ➣ *{rules}*  \n🗯┇ _تستطيع اضهار الاسم بواسطه_ ➣ *{name}*\n🗯┇ _تستطيع اضهار المعرف بواسطه_ ➣ *{username}*"
@@ -2403,13 +2403,13 @@ end
 	end
  if msg.newuser then
  if msg.newuser.id == bot.id then
-   local rsala =[[ 🗯┇  مرحبآ انا بوت اسمي الزعيم 👮‍♀️
-🗯┇ اختصاصي حمايه كروبات 
+   local rsala =[[ 🗯┇  اهلا بك في بوت جنرال 👮‍♀️
+🗯┇ عملي حمايه كروبات 
 🗯┇ من السبام والوسائط والتكرار والخ ...
-🗯┇  مطور البوت : @TH3BOSS
-🗯┇  للاستفسار راسلني : @lBOSSl
+🗯┇  مطور البوت : @KNSLTHM
+🗯┇  للاستفسار راسلني : @KNSLTHM
 ]]
-	sendPhoto(msg.to.id, "data/photos/TH3BOSS.jpg", rsala, msg.id)
+	sendPhoto(msg.to.id, "data/photos/GENERAL.jpg", rsala, msg.id)
 end
 end
 end
@@ -2417,12 +2417,12 @@ return {
   patterns = {
 "^(تفعيل)$",
 "^(تعطيل)$",
-"^(رفع المدير)$",
-"^(تنزيل المدير)$",
-"^(رفع المدير) (@[%a%d%_]+)$",
-"^(تنزيل المدير) (@[%a%d%_]+)$",
-"^(رفع المدير) (%d+)$",
-"^(تنزيل المدير) (%d+)$",
+"^(رفع مدير)$",
+"^(تنزيل مدير)$",
+"^(رفع مدير) (@[%a%d%_]+)$",
+"^(تنزيل مدير) (@[%a%d%_]+)$",
+"^(رفع مدير) (%d+)$",
+"^(تنزيل مدير) (%d+)$",
 "^(رفع ادمن)$",
 "^(تنزيل ادمن)$",
 "^(رفع ادمن) (@[%a%d%_]+)$",
@@ -2458,7 +2458,7 @@ return {
 "^(الترحيب)$",
 "^(تشغيل) (.*)$",
 "^(ايقاف) (.*)$",
-"^(ضع الترحيب) (.*)$",
+"^(ضع ترحيب) (.*)$",
 "^(تثبيت)$",
 "^(الغاء التثبيت)$",
 "^(الوصف)$",

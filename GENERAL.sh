@@ -41,6 +41,6 @@ elif [ "$1" = "update" ]; then
 	update
 	exit 1
 else
-green " جاري تشغيل سورس الــزعــيــم تــوكــن   ...	"
+green " يتم الان تشغيل سورس جنرال بالتوكن   ...	"
 lua ./bot/bot.lua
 fi
